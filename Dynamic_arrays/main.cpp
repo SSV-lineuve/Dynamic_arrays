@@ -46,21 +46,21 @@ void main()
 {
 	setlocale(LC_ALL, "");
 #ifdef DYNAMIC_MEMORY_1
-	
+
 	int n;
-		
+
 	cout << "Введите размер массива: "; cin >> n;
 	int* arr = Allocate<int>(n);
 	//double* arr = Allocate<double>(n);
 	//char* arr = Allocate<char>(n);
-		
+
 	FillRand(arr, n);
-	Print(arr, n);	
+	Print(arr, n);
 
 	int value;
 	//double value;
 	//char value;
-	cout << "Введите добавляемое значение: "; cin >> value;	
+	cout << "Введите добавляемое значение: "; cin >> value;
 	push_back(arr, n, value);
 	Print(arr, n);
 
@@ -97,7 +97,7 @@ void main()
 	cout << "\nУдалён " << index << "-й элемент массива: \n";
 	Print(arr, n);
 	system("color 02");
-	Clear(arr,n);
+	Clear(arr, n);
 	//delete[] arr;
 #endif // DYNAMIC_MEMORY_1
 
@@ -111,9 +111,9 @@ void main()
 
 	cout << "Введите количество строк: "; cin >> m;
 	cout << "Введите количество элементов строки: "; cin >> n;
-	
+
 	double** arr;
-	Allocate(arr, m,n);	
+	Allocate(arr, m, n);
 	FillRand(arr, m, n);
 	Print(arr, m, n);
 
@@ -170,7 +170,7 @@ void main()
 	Print(arr, m, n);
 	system("color 04");
 
-	Clear(arr, m, n);	
+	Clear(arr, m, n);
 #endif // DYNAMIC_MEMORY_2
 }
 
@@ -222,16 +222,16 @@ template<typename T> void Print(T arr[], const int n)
 }
 
 template<typename T> void push_back(T*& arr, int& n, T value)
-{	
-	T* buffer = new T[n + 1]{};	
+{
+	T* buffer = new T[n + 1]{};
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i] = arr[i];
-	}	
-	delete[] arr;	
-	arr = buffer;	
-	arr[n] = value;	
-	n++;	
+	}
+	delete[] arr;
+	arr = buffer;
+	arr[n] = value;
+	n++;
 }
 
 template<typename T> T* push_front(T arr[], int& n, T value)
@@ -358,15 +358,15 @@ template<typename T> void Print(T** arr, const int m, const int n)
 }
 
 template<typename T> T** push_row_back(T** arr, int& m, int n)
-{	
-	T** buffer = new T * [m + 1];	
+{
+	T** buffer = new T * [m + 1];
 	for (int i = 0; i < m; i++)
 	{
 		buffer[i] = new T[n];
 		for (int j = 0; j < n; j++)
 			buffer[i][j] = arr[i][j];
 	}
-	buffer[m] = new T[n]{};	
+	buffer[m] = new T[n]{};
 	for (int i = 0; i < m; i++)
 		delete[] arr[i];
 	delete[] arr;
@@ -383,7 +383,7 @@ template<typename T> T** push_row_front(T** arr, int& m, int n)
 		for (int j = 0; j < n; j++)
 			buffer[i + 1][j] = arr[i][j];
 	}
-	buffer[0] = new T[n]{};	
+	buffer[0] = new T[n]{};
 	for (int i = 0; i < m; i++)
 		delete[] arr[i];
 	delete[] arr;
